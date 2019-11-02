@@ -58,6 +58,8 @@ App._Dialog = function (window, document, Clickable, App, Utils) {
 		if (!Utils.os.android || (Utils.os.version >= 4)) {
 			dialogContainer.addEventListener('touchstart', function (e) {
 				if (e.target === dialogContainer) {
+          // hide keyboard when click on the dialog mask layer
+          if (document.activeElement && typeof document.activeElement.blur === 'function') document.activeElement.blur();
 					e.preventDefault();
 				}
 			}, false);
